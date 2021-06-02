@@ -6,6 +6,12 @@ body, html{
     background-color: transparent;
     transition: background ease-out 0.2s;
 }
+#header.active{
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,.2);
+    z-index: 999;
+}
 #header .navbar-collapse{
     width: auto;
 }
@@ -59,4 +65,65 @@ body, html{
 }
 #servicos a.destaque .img-container img{
     max-height: 160px;
+}
+#clientes a.link-clientes{
+    padding: 0 15px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px var(--light);
+    height: 100px;
+    transition: ease-out all .2s;
+}
+#clientes a.link-clientes:hover{
+    transform: scale(1.2);
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.15);
+}
+#clientes a.link-clientes img{
+    filter: grayscale(100%);
+    max-height: 70px;
+    width: 100%;
+    opacity: 0.6;
+}
+#clientes a.link-clientes img:hover{
+    filter: none;
+    opacity: 1;
+}
+#clientes .clientes-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: var(--light);
+    border-radius: 5px;
+}
+#clientes .clientes-texto .imagem{
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    margin-left: -50px;
+    color: #b4b4b4;
+    font-size: 24px;
+    line-height: 26px;
+}
+#clientes .clientes-texto .imagem span{
+    color: var(--secundary);
+    font-size: 110px;
+    line-height: 100px;
+    letter-spacing: -10px;
+    font-weight: 900;
+    display: block;
+}
+#clientes .clientes-texto .telefone{
+    display: flex;
+    font-size: 14px;
+    color: #b4b4b4;
+
+}
+#clientes .clientes-texto .telefone span{
+    font-size: 25px;
+    color: #797979;
+    font-weight: 900;
+    display: block;
 }
