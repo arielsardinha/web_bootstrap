@@ -155,3 +155,19 @@ body, html{
 #servicos .button-group button.active{
     color: var(--primary);
 }
+#depoimentos .depoimento{
+    background-color: var(--light);
+    border-radius: 5px;
+    display: flex;
+    padding: 30px;
+}
+#depoimentos .depoimento .quote{
+    max-width: 35px;
+}
+#depoimentos .depoimento .name{
+    color: #aaa;
+}
+#depoimentos .depoimento .name span{
+    color: black;
+    font-weight: 700;
+}
