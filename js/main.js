@@ -1,25 +1,64 @@
+// evento de scroll
+// debounce
 const target = document.getElementById('header')
-
-window.addEventListener('scroll', function(){
+const debounce = function (func, wait, immediate) {
+    let timeout;
+    return function (...args) {
+        const context = this;
+        const later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+// scroll
+// passa a funcao para travar o tempo de execucao do chamado
+window.addEventListener('scroll', debounce(function () {
     animeScroll()
-})
-function animeScroll(){
+}, 200))// define o tempo de mile segundos vai ter de atraso
+function animeScroll() {
     const windwTop = window.pageYOffset;
-    console.log(windwTop)
-    if(windwTop > 89 ){
+    if (windwTop > 89) {
         target.classList.add('active')
-    }else{
+    } else {
         target.classList.remove('active')
     }
 }
 
+jQuery(document).ready(function ($){ // jqyery global
+    // isotope
+    // pega os botoes e seleciona o que o usuario pegar
+    let btns = $("#servicos .button-group button");
+    btns.click(function (e){
+        $('#servicos .button-group button').removeClass('active')
+        e.target.classList.add('active');
+        let selector = $(e.target).attr('data-filter');
+        $("#servicos .grid").isotope({
+            filter:selector,
+        })
+    }) 
+    $(window).on('load',function(){
+        $("#servicos .grid").isotope({
+            filter:"*",
+        })
+    })
+    // magnify
+    $('.grid .popup-link').magnificPopup({
+        type: "image",
+        gallery:{
+            enabled:true,
+            tPrev: 'Anterior',
+            tNext:'Próxima',
+            tCounter:'%curr% de %total%',
+        },
+    })
+})
 
-// jQuery(document).ready(function($){
-//     window.onscroll = function(){
-//         if(window.pageYOffset > 140){
-//             $('#header').addClass('active');
-//         }else{
-//             $('#header').removeClass('active');
-//         }
-//     }
-// })
+
+
+
+
